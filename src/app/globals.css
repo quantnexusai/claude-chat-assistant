@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-outline {
+    @apply border border-primary-500 text-primary-500 hover:bg-primary-50 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-gray-600 hover:bg-gray-100 font-medium py-2 px-2 rounded-lg transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100;
+  }
+
+  .input {
+    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all duration-200;
+  }
+
+  .message-bubble-outgoing {
+    @apply bg-primary-500 text-white rounded-2xl rounded-br-md px-4 py-2.5;
+  }
+
+  .message-bubble-incoming {
+    @apply bg-chat-incoming text-gray-900 rounded-2xl rounded-bl-md px-4 py-2.5;
+  }
+
+  .message-bubble-ai {
+    @apply bg-purple-100 text-gray-900 rounded-2xl rounded-bl-md px-4 py-2.5 border border-purple-200;
+  }
+
+  .avatar {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-white font-medium text-sm;
+  }
+
+  .avatar-sm {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-white font-medium text-xs;
+  }
+
+  .avatar-lg {
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-white font-medium text-base;
+  }
+
+  .status-indicator {
+    @apply w-3 h-3 rounded-full border-2 border-white absolute bottom-0 right-0;
+  }
+
+  .status-online {
+    @apply bg-accent-500;
+  }
+
+  .status-away {
+    @apply bg-yellow-500;
+  }
+
+  .status-offline {
+    @apply bg-gray-400;
+  }
+
+  .conversation-item {
+    @apply flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-colors duration-200 hover:bg-gray-50;
+  }
+
+  .conversation-item.active {
+    @apply bg-primary-50;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 8px 12px;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background-color: #9ca3af;
+  border-radius: 50%;
+  animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
