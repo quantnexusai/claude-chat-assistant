@@ -255,11 +255,11 @@ export default function ChatPage() {
           onNewChat={handleNewChat}
         />
 
-        {/* Demo banner */}
+        {/* Development mode banner */}
         {isDemo && (
-          <div className="p-3 bg-primary-50 border-t">
-            <p className="text-xs text-primary-600 text-center">
-              Demo Mode - Data will not persist
+          <div className="p-3 bg-yellow-50 border-t border-yellow-200">
+            <p className="text-xs text-yellow-700 text-center">
+              Local Preview - Configure API keys for full functionality
             </p>
           </div>
         )}

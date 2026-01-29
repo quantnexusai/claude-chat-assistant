@@ -88,8 +88,8 @@ export default function AuthModal({ isOpen, onClose, mode, onModeChange }: AuthM
         </p>
 
         {isDemo && (
-          <div className="mb-4 p-3 bg-primary-50 border border-primary-200 rounded-lg text-sm text-primary-700">
-            Demo Mode: Any credentials will work.
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-700">
+            Local Preview: Enter any credentials to explore the UI.
           </div>
         )}
 

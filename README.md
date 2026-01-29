@@ -86,13 +86,14 @@ npm run dev
 | `SUPABASE_SECRET_KEY` | Supabase secret (service role) key | Yes |
 | `ANTHROPIC_API_KEY` | Your Anthropic API key for Claude | Yes |
 
-## Demo Mode
+## Local Development
 
-The app includes a demo mode that activates automatically when Supabase is not configured. In demo mode:
-- Sample conversations and messages are shown
-- Claude AI responses are simulated
-- No data is persisted
-- All features are functional for testing
+For local development without API keys, the app includes sample data to preview the UI:
+- Sample conversations and messages are displayed
+- Claude AI responses are simulated locally
+- This is useful for UI development and testing only
+
+**Note:** Vercel deployment requires valid API keys. All features require proper Supabase and Anthropic configuration.
 
 ## Project Structure
 
