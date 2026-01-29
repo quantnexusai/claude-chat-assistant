@@ -4,8 +4,6 @@ A modern real-time chat messaging application with integrated Claude AI assistan
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fquantnexusai%2Fclaude-chat-assistant&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,SUPABASE_SECRET_KEY,ANTHROPIC_API_KEY&envDescription=API%20keys%20required%20for%20Supabase%20and%20Claude%20AI&envLink=https%3A%2F%2Fgithub.com%2Fquantnexusai%2Fclaude-chat-assistant%23environment-variables&project-name=claude-chat-assistant&repository-name=claude-chat-assistant)
 
-![Claude Chat Assistant](https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=1200&h=630&fit=crop)
-
 ## Features
 
 - **Claude AI Integration** - Chat with Claude AI for instant assistance with writing, coding, brainstorming, and more
@@ -15,187 +13,80 @@ A modern real-time chat messaging application with integrated Claude AI assistan
 - **Read Receipts** - See when your messages have been read
 - **Message Actions** - Reply to, edit, or delete messages
 - **User Presence** - See who's online, away, or offline
-- **Pinned Conversations** - Pin important chats for quick access
 - **Dark Mode** - Toggle between light and dark themes
 - **Responsive Design** - Works beautifully on desktop and mobile devices
 
-## Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **Frontend**: React 19, TypeScript
-- **Styling**: Tailwind CSS
-- **Database**: Supabase (PostgreSQL)
-- **Authentication**: Supabase Auth
-- **AI**: Claude API (Anthropic)
-- **Icons**: Lucide React
-- **Font**: Plus Jakarta Sans
-
 ## Quick Start
 
-### Prerequisites
+### Step 1: Get Your API Keys
 
-- Node.js 18+
-- npm or yarn
-- Supabase account
-- Anthropic API key
+Before deploying, you'll need:
+1. **Supabase** - Create a project at [supabase.com](https://supabase.com)
+2. **Anthropic** - Get an API key at [console.anthropic.com](https://console.anthropic.com)
 
-### Installation
+### Step 2: Deploy to Vercel
 
-1. Clone the repository:
-```bash
-git clone https://github.com/quantnexusai/claude-chat-assistant.git
-cd claude-chat-assistant
-```
+Click the deploy button above and enter your API keys when prompted.
 
-2. Install dependencies:
-```bash
-npm install
-```
+| Variable | Where to Find |
+|----------|--------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase > Settings > API |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase > Settings > API |
+| `SUPABASE_SECRET_KEY` | Supabase > Settings > API |
+| `ANTHROPIC_API_KEY` | console.anthropic.com |
 
-3. Set up environment variables:
-```bash
-cp .env.example .env.local
-```
+### Step 3: Set Up Database
 
-4. Configure your `.env.local`:
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-SUPABASE_SECRET_KEY=your_supabase_secret_key
-ANTHROPIC_API_KEY=your_anthropic_api_key
-```
+Run `supabase/schema.sql` in your Supabase SQL Editor.
 
-5. Set up the database:
-   - Go to your Supabase project's SQL Editor
-   - Run the schema from `supabase/schema.sql`
+### Step 4: Done!
 
-6. Start the development server:
-```bash
-npm run dev
-```
-
-7. Open [http://localhost:3000](http://localhost:3000)
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable (anon) key | Yes |
-| `SUPABASE_SECRET_KEY` | Supabase secret (service role) key | Yes |
-| `ANTHROPIC_API_KEY` | Your Anthropic API key for Claude | Yes |
+Your app is now fully functional.
 
 ## Local Development
 
-For local development without API keys, the app includes sample data to preview the UI:
-- Sample conversations and messages are displayed
-- Claude AI responses are simulated locally
-- This is useful for UI development and testing only
+For local UI development without API keys, the app includes sample data:
+- Sample conversations and messages displayed
+- Any credentials work for local auth
+- Simulated Claude AI responses
 
-**Note:** Vercel deployment requires valid API keys. All features require proper Supabase and Anthropic configuration.
+**Note:** This is for development only. Deployment requires valid API keys.
+
+```bash
+git clone https://github.com/quantnexusai/claude-chat-assistant.git
+cd claude-chat-assistant
+npm install
+npm run dev
+```
+
+## Tech Stack
+
+Next.js 15 • React 19 • TypeScript • Tailwind CSS • Supabase • Claude API • Vercel
 
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── api/
-│   │   └── claude/        # Claude AI API route
-│   ├── chat/              # Main chat interface
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Landing page
-├── components/
-│   ├── AuthModal.tsx      # Sign in/up modal
-│   ├── Avatar.tsx         # User avatar component
-│   ├── ChatHeader.tsx     # Chat header with actions
-│   ├── ConversationList.tsx # Sidebar conversation list
-│   ├── MessageInput.tsx   # Message composer
-│   └── MessageList.tsx    # Messages display
-└── lib/
-    ├── auth-context.tsx   # Auth state management
-    ├── demo-data.ts       # Sample data for local preview
-    ├── supabase.ts        # Supabase client
-    └── types.ts           # TypeScript interfaces
+│   ├── api/claude/       # Claude AI API route
+│   ├── chat/             # Main chat interface
+│   └── page.tsx          # Landing page
+├── components/           # React components
+└── lib/                  # Utilities and types
 ```
-
-## Database Schema
-
-The app uses the following main tables:
-
-- **profiles** - User profiles with status and preferences
-- **conversations** - Private and group conversations
-- **conversation_members** - Many-to-many relationship
-- **messages** - Chat messages with support for replies
-- **message_reads** - Read receipt tracking
-- **pinned_conversations** - User's pinned chats
-
-See `supabase/schema.sql` for the complete schema with RLS policies.
 
 ## Customization
 
-### Colors
-
-The primary colors can be customized in `tailwind.config.js`:
-
-```js
-colors: {
-  primary: {
-    500: '#2D5BFF', // Main brand color
-    // ...
-  },
-  accent: {
-    500: '#00D084', // Success/online color
-    // ...
-  },
-}
-```
-
-### AI System Prompt
-
-Customize Claude's behavior in `src/app/api/claude/route.ts`:
-
-```ts
-system: `You are Claude, a helpful AI assistant...`,
-```
-
-## Deployment
-
-### Vercel (Recommended)
-
-Click the "Deploy with Vercel" button above or:
-
-```bash
-npm install -g vercel
-vercel
-```
-
-### Other Platforms
-
-Build the production version:
-
-```bash
-npm run build
-npm start
-```
-
-## Support
-
-Need help with deployment, configuration, or customization (MCP, AI agents, etc.)?
-
-Contact me at **ari@quantnexus.ai**
+Colors can be customized in `tailwind.config.js`. Claude's behavior can be modified in `src/app/api/claude/route.ts`.
 
 ## Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local development instructions.
+
+## Need Help?
+
+For assistance with deployment, configuration, or customization (MCP servers, AI agents, etc.), contact me at **ari@quantnexus.ai**
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- [Anthropic](https://anthropic.com) for Claude AI
-- [Supabase](https://supabase.com) for backend infrastructure
-- [Vercel](https://vercel.com) for hosting
-- [Tailwind CSS](https://tailwindcss.com) for styling
+MIT License - use freely for personal or commercial projects.
