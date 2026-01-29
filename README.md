@@ -18,7 +18,6 @@ A modern real-time chat messaging application with integrated Claude AI assistan
 - **Pinned Conversations** - Pin important chats for quick access
 - **Dark Mode** - Toggle between light and dark themes
 - **Responsive Design** - Works beautifully on desktop and mobile devices
-- **Demo Mode** - Try all features without setting up Supabase
 
 ## Tech Stack
 
@@ -115,7 +114,7 @@ src/
 │   └── MessageList.tsx    # Messages display
 └── lib/
     ├── auth-context.tsx   # Auth state management
-    ├── demo-data.ts       # Demo mode data
+    ├── demo-data.ts       # Sample data for local preview
     ├── supabase.ts        # Supabase client
     └── types.ts           # TypeScript interfaces
 ```
